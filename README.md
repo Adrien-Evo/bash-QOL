@@ -2,7 +2,7 @@
 
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
-![alt text](http://url/to/img.png)
+![alt text](QUOLL.png?raw=true "Title")
 
 ## Les raccourcis du bash
 
