@@ -1,62 +1,129 @@
 # bash-QOL
+
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
 ![alt text](http://url/to/img.png)
 
-## Les racourcis du bash
+## Les raccourcis du bash
 
-
-On peut faire pas mal de chose en bash en utilisant les raccourcis de base. D'abord, le premier :
+Votre premier raccourci pour aujourd'hui, sur Ubuntu et la plupart des distribution linux:
 
 Lancer un terminal : ```Ctrl + Tab + t```
-### Avancer/reculer d'un mot
 
-Utile pour des commandes imposantes
-```
-plotFingerprint -b /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K4me1.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K27.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K27me3.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_Input.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K4me3.sorted.bam --plotFile /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/DC1074TESTINGchr1.fingerprint.png --labels DC1074_H3K4me1 DC1074_H3K27 DC1074_H3K27me3 DC1074_Input DC1074_H3K4me3 --plotTitle DC1074 --outRawCounts /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/DPQC/DC1074.plotFingerprintOutRawCounts.txt --outQualityMetrics /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/DPQC/DC1074.plotFingerprintOutQualityMetrics.txt --region 1 --numberOfSamples 50000 --minMappingQuality 30
-```
-```
-Meta + f
-Meta + b
-ctrl + w
-ctrl + u
-```
-
-
-https://ss64.com/bash/syntax-keyboard.html
 ### L'historique
-Une des commandes les plus importante en bash
+
+Les commandes lancées dans le bash sont stockées dans un historique, le fichier *~/.bash_history*. Notez que la taille de votre historique est indiqué et controlé par votre fichier *~/.bashrc* 0:
+```
+HISTSIZE=1000
+HISTFILESIZE=2000
+```
+Une fois dans le terminal, vous pouvez acceder à l'historique avec : 
 ```
 Ctrl + r : recherche en arrière 
 Ctrl + s : recherche en avant
 ```
-Ctrl + s peut ne pas marcher. Pour faire marcher ce raccourci très pratique, ajoutez ceci dans votre .bashrc:
+Ctrl + s peut ne pas marcher. Pour faire marcher ce raccourci très pratique, ajoutez ceci dans votre *~/.bashrc* :
 ```
 #Disable the XON/XOFF flow control to have the proper ctrl + s shortcut for forward history search
 stty -ixon
 ```
-Solution trouvée [ici](https://stackoverflow.com/questions/791765/unable-to-forward-search-bash-history-similarly-as-with-ctrl-r)
+et relancer votre terminal. Solution trouvée [ici](https://stackoverflow.com/questions/791765/unable-to-forward-search-bash-history-similarly-as-with-ctrl-r).
 
-## Man n'est pas aidant
-La commande man accede à la page d'aide des outils du terminal. Cependant, il peut être long de trouver la bonne options parmi toutes celles disponible.
-exemple : man grep
-l'outil tdlr https://tldr.sh/ peut vous aider
+
+Nous aborderons l'utilisation des fichiers de configuration bash *bashrc* et *bash_aliases* plus tard dans ce tuto.
+
+### Gérer une ligne de commande imposante
+
+Il n'est pas rare de rencontrer dans la nature des commandes de taille imposantes qui vont tester votre patience :
+
+```
+plotFingerprint -b /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K4me1.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K27.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K27me3.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_Input.sorted.bam /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/03aln/DC1074_H3K4me3.sorted.bam --plotFile /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/DC1074TESTINGchr1.fingerprint.png --labels DC1074_H3K4me1 DC1074_H3K27 DC1074_H3K27me3 DC1074_Input DC1074_H3K4me3 --plotTitle DC1074 --outRawCounts /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/DPQC/DC1074.plotFingerprintOutRawCounts.txt --outQualityMetrics /sandbox/users/foucal-a/Projects/Chip-Seq-POSCHMANN/pyflow-ChIPseq/out/DPQC/DC1074.plotFingerprintOutQualityMetrics.txt --region 1 --numberOfSamples 50000 --minMappingQuality 30
+```
+Pour vous aidez :
+```
+Meta + f avancer d'un mot
+Meta + b reculer d'un mot
+ctrl + w supprimer le dernier mot
+ctrl + u supprimer la ligne
+```
+
+Un [lien compilant la plupart des raccourcis bash](https://ss64.com/bash/syntax-keyboard.html)
+
+## tldr : man n'est pas aidant
+
+Un exemple:
+```
+man grep
+```
+L'outil d'aide *man* peut s'avérer trop verbeux pour retrouver une simple option. [L'outil tldr](https://tldr.sh/) peut vous aider.
+Multiples options d'installation et une interface web. Avec pip sur votre conda base par exemple :
+
+```
+pip install tldr
+```
+Maintenant vous pouvez utiliser *tldr* pour le reste des commandes que nous allons voir !
 
 ## find et locate
 
 Un autre outil très pratique pour trouver un fichier, la commande find
+
 ```
 find . -name bashrc
 ```
+
+*find* est **extremement** utile. Quelques examples
+Trouver tout les fichier txt de votre systeme
+```
+find . -name "*.txt*" -type f
+```
 http://www.hypexr.org/linux_find_help.php
 
-locate fait la meme chose, en plus rapide. Moins de fonctionnalité par contre
-
+```locate``` fait la meme chose, en plus rapide. Pas forcément disponible et moins de fonctionalité par contre. 
 Les différences entre find et locate : [thread stackoverflow](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
+
+Regardons quelques exemples de commande find avec tldr:
+```
+tldr find
+```
 
 ## xargs
 
+xargs construit et  execute des commandes  partir de l'input standard *stdin*. Pour chaque argument de stdin (séparé par un espace dans le mode par défault) xargs execute une commande. Exemple : 
+``` 
+echo un.txt deux.txt trois.txt | xargs touch
+```
+xargs est particulièrement utile pour lier entre eux des commandes qui initialement n'accepte pas la lecture en stdin, comme touch, ls mkdir ...
 
+```
+echo un.txt deux.txt trois.txt | touch
+
+```
+Une des utilisations les plus courantes de xargs se fait avec ```find``` combiné avec d'autres commande de modification de fichier. Ici nous cherchons dans tous les fichiers finissant par *.txt* la chaine de charactères *abc* :
+```
+find -name "*.txt" -type f | xargs grep "abc"
+```
+Cette commande va créer des erreurs. xargs par default utilise un espace pour séparer les arguments. Des espaces et des retours chariots peuvent aussi etre présent dans les noms de fichiers. On combine donc :
+* ```-print0``` pour afficher le chemin absolu des fichiers et les séparer par un caractère nul (et pas un retour chariot)
+* ```-0``` pour utilser le charactere nul  
+
+La nouvelle commande devient :
+```
+find -name "*.txt" -print0 | xargs -0 grep "abc"
+```
+
+Un autre exemple où wc est utlisé pour connaitre le nombre de ligne par fichier
+```
+find -name "*.txt" -print0 | xargs -0 wc -l
+```
+
+Utilisation simple de convertion d'un texte multi ligne en mono ligne
+```
+ls 
+ls | xargs
+```
+Liens :
+* https://shapeshed.com/unix-xargs/
+* https://www.tecmint.com/xargs-command-examples/
 
 ## du
 
