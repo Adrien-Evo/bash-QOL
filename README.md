@@ -1,8 +1,15 @@
 # bash-QOL
+![alt text](http://url/to/img.png)
 
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
-![alt text](http://url/to/img.png)
+
+Vous pouvez cloner ce tuto sur votr machine en local avec:
+```
+git clone https://github.com/Adrien-Evo/bash-QOL.git
+```
+
+
 
 ## Les raccourcis du bash
 
@@ -63,16 +70,23 @@ pip install tldr
 ```
 Maintenant vous pouvez utiliser *tldr* pour le reste des commandes que nous allons voir !
 
+## pwd
+Une commande très simple, qui vous indique votre position ```pwd```
+
+## readlink
+
+Il est souvent plus sur de travailler avec les chemin absolu des fichiers. Pour cela vous pouvez utilisez ```readlink -f``` ou ```realpath```. Les différences entre les outils sont détaillés sur ce [thread](https://unix.stackexchange.com/questions/136494/whats-the-difference-between-realpath-and-readlink-f)
+
 ## find et locate
 
-Un autre outil très pratique pour trouver un fichier, la commande find
+Un autre outil très pratique pour trouver un fichier, la commande ```find```
 
 ```
 find . -name bashrc
 ```
 
-*find* est **extremement** utile. Quelques examples
-Trouver tout les fichier txt de votre systeme
+*find* est **extrêmement** utile. Quelques examples
+Trouver tout les fichiers txt de votre système
 ```
 find . -name "*.txt*" -type f
 ```
@@ -90,33 +104,29 @@ tldr find
 
 xargs construit et  execute des commandes  partir de l'input standard *stdin*. Pour chaque argument de stdin (séparé par un espace dans le mode par défault) xargs execute une commande. Exemple : 
 ``` 
-echo un.txt deux.txt trois.txt | xargs touch
+echo un.tmp deux.tmp trois.tmp | xargs touch
 ```
 xargs est particulièrement utile pour lier entre eux des commandes qui initialement n'accepte pas la lecture en stdin, comme touch, ls mkdir ...
 
-```
-echo un.txt deux.txt trois.txt | touch
-
-```
-Une des utilisations les plus courantes de xargs se fait avec ```find``` combiné avec d'autres commande de modification de fichier. Ici nous cherchons dans tous les fichiers finissant par *.txt* la chaine de charactères *abc* :
+Une des utilisations les plus courantes de xargs se fait avec ```find``` combiné avec d'autres commande de modification de fichier. Ici nous cherchons dans tous les fichiers finissant par *.txt* la chaîne de caractères *abc* :
 ```
 find -name "*.txt" -type f | xargs grep "abc"
 ```
 Cette commande va créer des erreurs. xargs par default utilise un espace pour séparer les arguments. Des espaces et des retours chariots peuvent aussi etre présent dans les noms de fichiers. On combine donc :
 * ```-print0``` pour afficher le chemin absolu des fichiers et les séparer par un caractère nul (et pas un retour chariot)
-* ```-0``` pour utilser le charactere nul  
+* ```-0``` pour utiliser le caractère nul  
 
 La nouvelle commande devient :
 ```
 find -name "*.txt" -print0 | xargs -0 grep "abc"
 ```
 
-Un autre exemple où wc est utlisé pour connaitre le nombre de ligne par fichier
+Un autre exemple où wc est utilisé pour connaître le nombre de ligne par fichier
 ```
 find -name "*.txt" -print0 | xargs -0 wc -l
 ```
 
-Utilisation simple de convertion d'un texte multi ligne en mono ligne
+Utilisation simple de conversion d'un texte multi ligne en mono ligne
 ```
 ls 
 ls | xargs
@@ -127,11 +137,29 @@ Liens :
 
 ## du
 
-## ps
+Nous prenons tous des libertés avec notre usage de l'espace disque. Une bonne façon de connaitre la taille de nos différents dossiers et fichers et d'utiliser la commande du, pour *disk usage*.
 
-## pwd
+```
+du
+du -h
+du -ah
+du -hsc *
+```
 
-## realpath et readlink
+
+## ps, top, htop
+
+Pour surveiller les différents *process* sur votre machine
+
+```ps -ef | less```
+```top```
+Une version plus sympa de top, htop : 
+
+```
+sudo apt-get install htop
+htop
+```
+
 ## bashrc:
 
 Le fichier ~/.bashrc est le fichier principal de configuration de votre terminal. C'est un script shell qui est lancé automatiquement quand votre terminal est lancé (interactive non-login shell, X11 style). Il peut contenir :
@@ -140,11 +168,16 @@ Le fichier ~/.bashrc est le fichier principal de configuration de votre terminal
 * La gestion de vos différents exécutables via la variable $PATH
 * Des alias de commandes
 
+Vous avez normalement deja un fichier .bashrc sur votre $HOME
+
 ## bash_aliases
 
-Je recommande d'utiliser le fichier ~/.bash_aliases pour les alias de commande plûtot que bashrc.
-Un exemple de bash_aliases :
-
+Je recommande d'utiliser le fichier ~/.bash_aliases pour les alias de commande plutôt que bashrc.
+Pour l'essayer :
+```
+cd
+cp .bash_aliases{,bak}
+find . -name ".bashrc" -type f 2> /dev/null | grep bash-QOL | xargs -Iargs echo cp args ~/
 
 
 https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
