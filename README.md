@@ -1,15 +1,14 @@
 # bash-QOL
-![alt text](http://url/to/img.png)
+
+![alt text](QUOLL.png?raw=true "Un QUOLL dans un bash")
 
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
 
-Vous pouvez cloner ce tuto sur votr machine en local avec:
+Vous pouvez cloner ce tuto sur votre machine en local avec :
 ```
 git clone https://github.com/Adrien-Evo/bash-QOL.git
 ```
-
-
 
 ## Les raccourcis du bash
 
