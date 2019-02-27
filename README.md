@@ -14,7 +14,7 @@ git clone https://github.com/Adrien-Evo/bash-QOL.git
 
 Votre premier raccourci pour aujourd'hui, sur Ubuntu et la plupart des distribution linux pour lancer un terminal :
 
-```Ctrl + Tab + t```
+```Ctrl + Alt + t```
 
 ### Gérer une ligne de commande imposante
 
@@ -37,12 +37,12 @@ Un [lien compilant la plupart des raccourcis bash](https://ss64.com/bash/syntax-
 
 ## L'historique
 
-Les commandes lancées dans le bash sont stockées dans un historique, le fichier *~/.bash_history*. Notez que la taille de votre historique est indiquée et controlée par votre fichier *~/.bashrc* :
+Les commandes lancées dans le bash sont stockées dans un historique, le fichier *~/.bash_history*. Notez que la taille de votre historique est indiquée et contrôlée par votre fichier *~/.bashrc* :
 ```
 HISTSIZE=1000
 HISTFILESIZE=2000
 ```
-Une fois dans le terminal, vous pouvez accéder à l'historique avec ```Ctrl + r : recherche en arrière ```. Une fois dans la *reverse-i-search* :
+Une fois dans le terminal, vous pouvez accéder à l'historique avec ```Ctrl + r ```. Une fois dans la *reverse-i-search* :
 
 ```
 Ctrl + r : recherche en arrière 
