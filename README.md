@@ -2,12 +2,13 @@
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
 ![alt text](http://url/to/img.png)
+
 ## Les racourcis du bash
 
-https://ss64.com/bash/syntax-keyboard.html
+
 On peut faire pas mal de chose en bash en utilisant les raccourcis de base. D'abord, le premier :
 
-Lancer un terminal : '''Ctrl + Tab + t```
+Lancer un terminal : ```Ctrl + Tab + t```
 ### Avancer/reculer d'un mot
 
 Utile pour des commandes imposantes
@@ -20,6 +21,9 @@ Meta + b
 ctrl + w
 ctrl + u
 ```
+
+
+https://ss64.com/bash/syntax-keyboard.html
 ### L'historique
 Une des commandes les plus importante en bash
 ```
@@ -40,7 +44,9 @@ l'outil tdlr https://tldr.sh/ peut vous aider
 
 ## find et locate
 
-Un autre outil très pratique pour trouver un fichier, la commande '''find``````find . -name bashrc
+Un autre outil très pratique pour trouver un fichier, la commande find
+```
+find . -name bashrc
 ```
 http://www.hypexr.org/linux_find_help.php
 
