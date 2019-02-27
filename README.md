@@ -2,41 +2,19 @@
 
 ![alt text](QUOLL.png?raw=true "Un QUOLL dans un bash")
 
-Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal qui savent utiliser bash et le terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
+Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
 
-Vous pouvez cloner ce tuto sur votre machine en local avec :
+Vous pouvez cloner ce tuto sur votre machine en local avec git :
 ```
 git clone https://github.com/Adrien-Evo/bash-QOL.git
 ```
 
 ## Les raccourcis du bash
 
-Votre premier raccourci pour aujourd'hui, sur Ubuntu et la plupart des distribution linux:
+Votre premier raccourci pour aujourd'hui, sur Ubuntu et la plupart des distribution linux pour lancer un terminal :
 
-Lancer un terminal : ```Ctrl + Tab + t```
-
-### L'historique
-
-Les commandes lancées dans le bash sont stockées dans un historique, le fichier *~/.bash_history*. Notez que la taille de votre historique est indiqué et controlé par votre fichier *~/.bashrc* 0:
-```
-HISTSIZE=1000
-HISTFILESIZE=2000
-```
-Une fois dans le terminal, vous pouvez acceder à l'historique avec : 
-```
-Ctrl + r : recherche en arrière 
-Ctrl + s : recherche en avant
-```
-Ctrl + s peut ne pas marcher. Pour faire marcher ce raccourci très pratique, ajoutez ceci dans votre *~/.bashrc* :
-```
-#Disable the XON/XOFF flow control to have the proper ctrl + s shortcut for forward history search
-stty -ixon
-```
-et relancer votre terminal. Solution trouvée [ici](https://stackoverflow.com/questions/791765/unable-to-forward-search-bash-history-similarly-as-with-ctrl-r).
-
-
-Nous aborderons l'utilisation des fichiers de configuration bash *bashrc* et *bash_aliases* plus tard dans ce tuto.
+```Ctrl + Tab + t```
 
 ### Gérer une ligne de commande imposante
 
@@ -53,7 +31,33 @@ ctrl + w supprimer le dernier mot
 ctrl + u supprimer la ligne
 ```
 
+Nettoyer votre terminal avec ```ctrl + l``` peut remplacer la commande ```clear```
+
 Un [lien compilant la plupart des raccourcis bash](https://ss64.com/bash/syntax-keyboard.html)
+
+## L'historique
+
+Les commandes lancées dans le bash sont stockées dans un historique, le fichier *~/.bash_history*. Notez que la taille de votre historique est indiquée et controlée par votre fichier *~/.bashrc* :
+```
+HISTSIZE=1000
+HISTFILESIZE=2000
+```
+Une fois dans le terminal, vous pouvez accéder à l'historique avec ```Ctrl + r : recherche en arrière ```. Une fois dans la *reverse-i-search* :
+
+```
+Ctrl + r : recherche en arrière 
+Ctrl + s : recherche en avant
+```
+
+Ctrl + s peut ne pas marcher. Pour faire marcher ce raccourci très pratique, ajoutez ceci dans votre *~/.bashrc* :
+
+```
+#Disable the XON/XOFF flow control to have the proper ctrl + s shortcut for forward history search
+stty -ixon
+```
+et relancer votre terminal. Solution trouvée [ici](https://stackoverflow.com/questions/791765/unable-to-forward-search-bash-history-similarly-as-with-ctrl-r). Nous aborderons l'utilisation des fichiers de configuration bash *bashrc* et *bash_aliases* plus tard dans ce tuto.
+
+
 
 ## tldr : man n'est pas aidant
 
@@ -74,7 +78,7 @@ Une commande très simple, qui vous indique votre position ```pwd```
 
 ## readlink
 
-Il est souvent plus sur de travailler avec les chemin absolu des fichiers. Pour cela vous pouvez utilisez ```readlink -f``` ou ```realpath```. Les différences entre les outils sont détaillés sur ce [thread](https://unix.stackexchange.com/questions/136494/whats-the-difference-between-realpath-and-readlink-f)
+Il est souvent plus sur de travailler avec les chemins absolus des fichiers. Pour cela vous pouvez utilisez ```readlink -f``` ou ```realpath```. Les différences entre ces outils sont détaillés sur ce [thread](https://unix.stackexchange.com/questions/136494/whats-the-difference-between-realpath-and-readlink-f)
 
 ## find et locate
 
@@ -84,20 +88,19 @@ Un autre outil très pratique pour trouver un fichier, la commande ```find```
 find . -name bashrc
 ```
 
-*find* est **extrêmement** utile. Quelques examples
-Trouver tout les fichiers txt de votre système
+*find* est **extrêmement** utile. Cette commande peut par exemple trouver tout les fichiers *.txt* de votre système :
 ```
 find . -name "*.txt*" -type f
 ```
-http://www.hypexr.org/linux_find_help.php
 
-```locate``` fait la meme chose, en plus rapide. Pas forcément disponible et moins de fonctionalité par contre. 
+```locate``` fait la meme chose, en plus rapide. Pas forcément disponible et moins de fonctionnalité par contre. 
 Les différences entre find et locate : [thread stackoverflow](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
 
-Regardons quelques exemples de commande find avec tldr:
+Quelques exemples de commande find avec tldr:
 ```
 tldr find
 ```
+Une ressource web sur [find](http://www.hypexr.org/linux_find_help.php)
 
 ## xargs
 
@@ -136,7 +139,7 @@ Liens :
 
 ## du
 
-Nous prenons tous des libertés avec notre usage de l'espace disque. Une bonne façon de connaitre la taille de nos différents dossiers et fichers et d'utiliser la commande du, pour *disk usage*.
+Nous prenons tous des libertés avec notre usage de l'espace disque. Une bonne façon de connaître la taille de nos différents dossiers et fichiers et d'utiliser la commande du (pour *disk usage*).
 
 ```
 du
@@ -172,20 +175,24 @@ Vous avez normalement deja un fichier .bashrc sur votre $HOME
 ## bash_aliases
 
 Je recommande d'utiliser le fichier ~/.bash_aliases pour les alias de commande plutôt que bashrc.
-Pour l'essayer :
+Pour l'essayer (si vous avez déja cloné le repo git) :
 ```
 cd
 cp .bash_aliases{,bak}
 find . -name ".bashrc" -type f 2> /dev/null | grep bash-QOL | xargs -Iargs echo cp args ~/
+```
 
-
+Quelques ressources sur les différents aliases
 https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html
 
-### Aliases pour git
 https://jonsuh.com/blog/git-command-line-shortcuts/
+
 
 ## Le bash c'est difficile
 Débugger du shell est frustrant. Les messages d'erreurs sont sibyllins. Cet outil peut vous aider :
 https://www.shellcheck.net/#
 
 
+## TMUX
+
+[Lien vers une autre repo avec le tuto Tmux](https://github.com/Adrien-Evo/tmux-tuto)
