@@ -122,7 +122,7 @@ export PATH="/home/af/miniconda3/bin:$PATH"
 #Disable the XON/XOFF flow control to have the proper ctrl + S for forward history search
 stty -ixon
 
-# Powerline installed with PIP install powerline-status
+# Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1

@@ -27,7 +27,13 @@ alias bird="ssh -X foucal-a@bird2login.univ-nantes.fr"
 #------------------------
 alias usage='du -hsc * | sort -rh'
 
+#------------------------
+#File viewing with column
+#------------------------
 
+lessT(){
+	column -t "$@" | less
+}
 #---------------------
 # Typo proof aliases
 #---------------------
