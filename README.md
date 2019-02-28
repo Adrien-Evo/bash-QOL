@@ -78,6 +78,12 @@ Maintenant vous pouvez utiliser *tldr* pour le reste des commandes que nous allo
 ## pwd
 Une commande très simple, qui vous indique votre position ```pwd```
 
+## which
+Cette commande va pouvoir vous dire la localisation des outils bash :
+
+```which grep```
+```which samtools```
+
 ## readlink
 
 Il est souvent plus sur de travailler avec les chemins absolus des fichiers. Pour cela vous pouvez utilisez ```readlink -f``` ou ```realpath```. Les différences entre ces outils sont détaillés sur ce [thread](https://unix.stackexchange.com/questions/136494/whats-the-difference-between-realpath-and-readlink-f)
@@ -223,8 +229,9 @@ Assez facile à installer avec pip :
 ```
 pip install powerline-status```
 Puis ajouter ceci dans le *~/.bashrc*:
+
 ```
-# Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
+\#Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
