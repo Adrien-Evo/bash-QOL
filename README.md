@@ -29,9 +29,11 @@ Meta + f avancer d'un mot
 Meta + b reculer d'un mot
 ctrl + w supprimer le dernier mot
 ctrl + u supprimer la ligne
+ctrl + c supprimer la commande
 ```
 
 Nettoyer votre terminal avec ```ctrl + l``` peut remplacer la commande ```clear```
+
 
 Un [lien compilant la plupart des raccourcis bash](https://ss64.com/bash/syntax-keyboard.html)
 
@@ -88,12 +90,17 @@ Un autre outil très pratique pour trouver un fichier, la commande ```find```
 find . -name bashrc
 ```
 
-*find* est **extrêmement** utile. Cette commande peut par exemple trouver tout les fichiers *.txt* de votre système :
+*find* est **extrêmement** utile. Cette commande peut par exemple trouver tous les fichiers *.txt* de votre système :
 ```
 find . -name "*.txt*" -type f
 ```
 
-```locate``` fait la meme chose, en plus rapide. Pas forcément disponible et moins de fonctionnalité par contre. 
+Il faut pouvoir aussi exclure certain dossier de la recherche :
+```
+find . -name "*.txt*" -type f -not -path "./miniconda3/*"
+```
+
+```locate``` fait la même chose, en plus rapide. Pas forcément disponible et moins de fonctionnalité par contre. 
 Les différences entre find et locate : [thread stackoverflow](https://unix.stackexchange.com/questions/60205/locate-vs-find-usage-pros-and-cons-of-each-other)
 
 Quelques exemples de commande find avec tldr:
@@ -104,7 +111,7 @@ Une ressource web sur [find](http://www.hypexr.org/linux_find_help.php)
 
 ## xargs
 
-xargs construit et  execute des commandes  partir de l'input standard *stdin*. Pour chaque argument de stdin (séparé par un espace dans le mode par défault) xargs execute une commande. Exemple : 
+xargs construit et  exécute des commandes à partir de l'input standard *stdin*. Pour chaque argument de stdin (séparé par un espace dans le mode par défaut) xargs exécute une commande. Exemple : 
 ``` 
 echo un.tmp deux.tmp trois.tmp | xargs touch
 ```
@@ -139,7 +146,7 @@ Liens :
 
 ## du
 
-Nous prenons tous des libertés avec notre usage de l'espace disque. Une bonne façon de connaître la taille de nos différents dossiers et fichiers et d'utiliser la commande du (pour *disk usage*).
+Nous prenons tous des libertés avec notre usage de l'espace disque. Une bonne façon de connaître la taille de nos différents dossiers et fichiers et d'utiliser la commande ```du``` (pour *disk usage*).
 
 ```
 du
@@ -160,6 +167,21 @@ Une version plus sympa de top, htop :
 ```
 sudo apt-get install htop
 htop
+```
+## zless zcat zgrep zdiff
+
+Ces outils vous évite d'avoir à décompresser des fichiers tar gz ou zip. Equivalent de : ```zcat fichier.gz | command```
+
+## column 
+
+Les fichiers type csv peuvent être  difficile à visualiser avec less. Essayez :
+
+```
+less example.bed
+```
+vs
+```
+column -t example.bed | less
 ```
 
 ## bashrc:
@@ -191,6 +213,32 @@ https://jonsuh.com/blog/git-command-line-shortcuts/
 ## Le bash c'est difficile
 Débugger du shell est frustrant. Les messages d'erreurs sont sibyllins. Cet outil peut vous aider :
 https://www.shellcheck.net/#
+
+## Customiser son bash
+Il est possible de customiser son bash avec des plugins comme [powerline](https://github.com/powerline/powerline):
+
+![alt text](powerline_shell.PNG?raw=true "Un exemple de shell avec powerline")
+
+Assez facile à installer avec pip :
+```
+pip install powerline-status```
+Puis ajouter ceci dans le *~/.bashrc*:
+```
+# Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /home/af/miniconda3/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
+```
+
+
+Aussi il existe plusieurs "versions" du terminal :
+* bash
+* Zsh
+* Fish
+* Rcsh
+
+
 
 
 ## TMUX
