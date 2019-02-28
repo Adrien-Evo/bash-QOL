@@ -56,6 +56,7 @@ alias s="git status"
 #-----------------------
 alias psme='ps -ef | grep $USER --color=always'
 alias psg='ps -ef | grep --color=always'
+alias watch='watch '
 
 #----------------------
 # Tmux related commands
