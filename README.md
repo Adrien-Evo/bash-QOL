@@ -227,11 +227,12 @@ Il est possible de customiser son bash avec des plugins comme [powerline](https:
 
 Assez facile à installer avec pip :
 ```
-pip install powerline-status```
+pip install powerline-status
+```
 Puis ajouter ceci dans le *~/.bashrc*:
 
 ```
-\#Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
+# Powerline installed with PIP install powerline-status https://github.com/powerline/powerline
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
@@ -244,8 +245,6 @@ Aussi il existe plusieurs "versions" du terminal :
 * Zsh
 * Fish
 * Rcsh
-
-
 
 
 ## TMUX
