@@ -1,6 +1,6 @@
 # bash-QOL
 
-![alt text](QUOLL.png?raw=true "Un QUOLL dans un bash")
+![alt text](QUOLL.png?raw=true "Un QUOLL dans un bash, pic by http://www.creturfetur.com/")
 
 Ce tuto a pour but d'aider les utilisateurs de bash dans leurs utilisation quotidienne du terminal. Les utilisateurs visés sont des utilisateurs occasionnels ou régulier du terminal. Cependant cette ressource peut être utile pour des utilisateurs débutants une fois familiarisés.
 
