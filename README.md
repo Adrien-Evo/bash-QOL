@@ -239,8 +239,9 @@ POWERLINE_BASH_SELECT=1
 . /home/af/miniconda3/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
 ```
 
+Vous verrez que votre prompt est maintenant différent. Cependant la configuration de powerline n'est pas très facile. Mérite d'être fouillé plus avant.
 
-Aussi il existe plusieurs "versions" du terminal :
+Petite mention, il existe aussi plusieurs "versions" du terminal :
 * bash
 * Zsh
 * Fish
