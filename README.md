@@ -201,7 +201,7 @@ Pour l'essayer (si vous avez déja cloné le repo git) :
 ```
 cd
 cp .bash_aliases{,bak}
-find . -name ".bashrc" -type f 2> /dev/null | grep bash-QOL | xargs -Iargs echo cp args ~/
+find . -name ".bash_aliases" -type f 2> /dev/null | grep bash-QOL | xargs -Iargs cp args ~/
 ```
 
 Quelques ressources sur les différents aliases
