@@ -146,6 +146,13 @@ Utilisation simple de conversion d'un texte multi ligne en mono ligne
 ls 
 ls | xargs
 ```
+Une option bien pratique pour permettre à xargs d'etre utilisé de manière plus souple : sh -c "expression"
+```
+find *txt -print0 | xargs -0 -I {} sh -c "echo {};grep chat {} > {}.output"
+```
+Cela permet de rajouter des pipes et d'autres commandes !
+
+
 Liens :
 * https://shapeshed.com/unix-xargs/
 * https://www.tecmint.com/xargs-command-examples/
