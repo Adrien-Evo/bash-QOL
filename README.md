@@ -84,6 +84,13 @@ Cette commande va pouvoir vous dire la localisation des outils bash :
 ```which grep```
 ```which samtools```
 
+## file
+
+Cette commande vous donne de précieuses informations sur la nature des fichiers, comme par exemple quels sont les symboles de fin de ligne qui peuvent causer des erreurs dans vos scripts, si vous travaillez sur des fichiers textes crées sur Windows.
+
+## dos2unix
+
+Cette commande remplace les fins de ligne windows par des fin de ligne unix (retour chariot windows à Unix: CRLF -> \n)
 ## readlink
 
 Il est souvent plus sur de travailler avec les chemins absolus des fichiers. Pour cela vous pouvez utilisez ```readlink -f``` ou ```realpath```. Les différences entre ces outils sont détaillés sur ce [thread](https://unix.stackexchange.com/questions/136494/whats-the-difference-between-realpath-and-readlink-f)
